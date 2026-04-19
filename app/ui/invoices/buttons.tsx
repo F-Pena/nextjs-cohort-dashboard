@@ -29,7 +29,7 @@ export function UpdateInvoice({ id, title = 'Edit' }: { id: string, title?: stri
 export function DeleteInvoice({ id, title = 'Delete' }: { id: string, title?: string }) {
   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
   return (
-    <form action={deleteInvoiceWithId}>
+    <form action={async () => { await deleteInvoiceWithId(); }}>
       <button type="submit" className="rounded-md border p-2 hover:bg-gray-100" title={title}>
         <TrashIcon className="w-5" />
       </button>
